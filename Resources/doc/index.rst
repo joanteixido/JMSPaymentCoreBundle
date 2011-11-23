@@ -16,15 +16,21 @@ Install
 =======
 
 Just add this bundle to your vendors and then add this basic configuration into your config.yml: 
-jms_payment_core:
-    secret: Your own and unic secret
+::
+    // YAML
+    jms_payment_core:
+      secret: Your own and unic secret
 
 Usage
 =====
 To use the DemoController remember to add the routing to your routing.yml:
-JMSPaymentCoreDemoBundle:
-    resource: "@JMSPaymentCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+::
+
+
+    // YAML
+    JMSPaymentCoreDemoBundle:
+      resource: "@JMSPaymentCoreBundle/Resources/config/routing.yml"
+      prefix:   /
 
 See the DemoController for a sample usage:
 https://github.com/schmittjoh/JMSPaymentCoreBundle/blob/master/Controller/DemoController.php
