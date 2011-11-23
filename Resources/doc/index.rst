@@ -12,10 +12,18 @@ Additionally, the bundle provides the following facilities to plugin implementat
   * Encryption of Sensitive Data
   * Retry Logic
 
+Install
+=======
+
+Just add this bundle to your vendors and then add this basic configuration into your config.yml: 
+jms_payment_core:
+    secret: Your own and unic secret
+
 Usage
 =====
 See the DemoController for a sample usage:
 https://github.com/schmittjoh/JMSPaymentCoreBundle/blob/master/Controller/DemoController.php
+
 
 Plugins
 =======
