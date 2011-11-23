@@ -21,6 +21,11 @@ jms_payment_core:
 
 Usage
 =====
+To use the DemoController remember to add the routing to your routing.yml:
+JMSPaymentCoreDemoBundle:
+    resource: "@JMSPaymentCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 See the DemoController for a sample usage:
 https://github.com/schmittjoh/JMSPaymentCoreBundle/blob/master/Controller/DemoController.php
 
