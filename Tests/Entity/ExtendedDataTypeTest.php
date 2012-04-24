@@ -42,18 +42,20 @@ class ExtendedDataTypeTest extends \PHPUnit_Framework_TestCase
         $extendedData = new ExtendedData;
         $extendedData->set('foo', 'foo', false);
         $extendedData->set('foo2', 'secret', true);
+        $extendedData->set('dont_persist', 'nono', false, false);
         $extendedData->set('foo3', 'foo', false);
 
         $type = Type::getType(ExtendedDataType::NAME);
 
         $serialized = $type->convertToDatabaseValue($extendedData, $this->getPlatform());
         $this->assertTrue(false !== $unserialized = unserialize($serialized));
-        $this->assertType('array', $unserialized);
+        $this->assertInternalType('array', $unserialized);
         $this->assertEquals('secret', $extendedData->get('foo2'), 'ExtendedData object is not affected by encryption.');
         $this->assertEquals('foo', $extendedData->get('foo'), 'ExtendedData object is not affected by conversion.');
         $this->assertEquals('foo', $unserialized['foo'][0]);
         $this->assertNotEquals('secret', $unserialized['foo2'][0]);
         $this->assertEquals('foo', $unserialized['foo3'][0]);
+        $this->assertTrue(!isset($unserialized['dont_persist']));
 
         $extendedData = $type->convertToPHPValue($serialized, $this->getPlatform());
         $this->assertEquals('foo', $extendedData->get('foo'));
